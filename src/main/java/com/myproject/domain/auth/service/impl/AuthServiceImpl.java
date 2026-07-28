@@ -42,6 +42,7 @@ public class AuthServiceImpl implements AuthService {
         // send mail temp password
         this.mailEx.sendTempPasswordEmail(request.getEmail(), request.getFullName(), tempPassword);
 
+
         return true;
     }
 
