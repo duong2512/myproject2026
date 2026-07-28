@@ -1,0 +1,16 @@
+package com.myproject.global.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
+
+    public ResourceNotFoundException(String source, String resourceType, String resourceId) {
+        super(String.format("[%s] Resource not found - type: %s, id: %s", source, resourceType, resourceId));
+    }
+
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}

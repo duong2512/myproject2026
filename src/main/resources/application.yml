@@ -1,0 +1,48 @@
+server:
+  port: 2512
+  error:
+    include-message: always
+  forward-headers-strategy: framework
+  shutdown: graceful
+
+spring:
+  application:
+    name: "My Project"
+  datasource:
+    url: jdbc:postgresql://localhost:1234/postgres
+    username: postgres
+    password: 25122002
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: MyHikariPool
+      maximum-pool-size: 100
+      minimum-idle: 5
+      idle-timeout: 30000
+      connection-timeout: 300000
+      max-lifetime: 1800000
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tungduong25122002@gmail.com
+    password: yvelrmrnqbkrcryu
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
