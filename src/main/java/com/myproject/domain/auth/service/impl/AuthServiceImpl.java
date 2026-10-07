@@ -29,10 +29,8 @@ public class AuthServiceImpl implements AuthService {
     public Boolean register(RegisterRequest request) {
         // validate account
         this.validateRegister(request);
-
         // Temp password
         String tempPassword = PasswordGeneratorUtils.generateTempPassword(10);
-
         // insert account
         AuthUser result = this.authRepository.register(request, this.passwordEncoder.encode(tempPassword));
         if (result == null) {
@@ -42,11 +40,8 @@ public class AuthServiceImpl implements AuthService {
         // send mail temp password
         this.mailEx.sendTempPasswordEmail(request.getEmail(), request.getFullName(), tempPassword);
 
-
         return true;
     }
-
-
 
     private void validateRegister(RegisterRequest request) {
         if (this.authRepository.checkUsername(request.getUserName())) {
